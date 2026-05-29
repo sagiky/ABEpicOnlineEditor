@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+.venv/
+
+# Temp folders
+temp/
+*.log
+
+# Default files (game content - DO NOT COMMIT)
+defaults/
+
+# Tools (download separately)
+abe_multitool
+abe_multitool.exe
+apktool.jar
+uber-apk-signer*.jar
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Secrets
+.env
+*.key

@@ -18,13 +18,17 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # Git kimlik bilgilerini ayarla
+          # 1. Standart Git kimliklerini tanımlayın
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           
-          # Hugging Face Space deponuzu uzak sunucu (remote) olarak ekleyin
-          # Token'ı URL içine güvenli bir şekilde gömüyoruz
-          git remote add hf https://sagiky:$HF_TOKEN@huggingface.co/spaces/sagiky/epiceditor
+          # 2. Şifresiz güvenli kimlik doğrulama ayarı (CRITICAL)
+          # Hugging Face'in artık zorunlu kıldığı güvenli token metodunu tanımlıyoruz
+          git config --global credential.helper store
+          echo "https://sagiky:$HF_TOKEN@huggingface.co" > ~/.git-credentials
           
-          # Değişiklikleri Hugging Face 'main' branch'ine zorlayarak gönderin (force push)
+          # 3. Temiz ve şifresiz URL ile uzak depoyu ekleyin
+          git remote add hf https://huggingface.co/spaces/sagiky/epiceditor
+          
+          # 4. Değişiklikleri zorlayarak (force) yükleyin
           git push --force hf main
