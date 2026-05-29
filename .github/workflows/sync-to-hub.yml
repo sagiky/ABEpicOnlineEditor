@@ -17,6 +17,6 @@ jobs:
         uses: huggingface/hub-sync@v0.1.0
         with:
           github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: username/repo-name  # Change to your HF username/repo
+          huggingface_repo_id: sagiky/epiceditor  # Change to your HF username/repo
           hf_token: ${{ secrets.HF_TOKEN }}
           repo_type: space  # Options: model, dataset, or space
